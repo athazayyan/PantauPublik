@@ -1,13 +1,10 @@
 <?php
 
+use App\Models\Laporan;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
-class laporan{
-    public static function all()
-    {
-        return view('semualaporan');
-    }
-}
+
 
 Route::get('/', function () {
     return view('welcome', ['title'=>'PantauPublik']);
@@ -16,7 +13,7 @@ Route::get('/', function () {
 
 
 Route::get('/laporan', function () {
-    return view('semualaporan', ['title'=>'laporan']);
+    return view('semualaporan', ['title'=>'laporan', 'laporans'=>Laporan::all()]);
 });
 
 Route::get('/portal', function () {
@@ -41,3 +38,14 @@ Route::get('/lapor', function () {
 
 });
 
+
+
+Route::get('/laporan/{id}', function ($id) {
+    $laporan = Arr::first(Laporan::all(), function($laporan) use ($id) {
+        return $laporan['id'] == $id;
+    });
+    return view('detail', [
+        'title'=>'Detail Laporan',
+        'laporan'=>$laporan
+    ]);
+});
