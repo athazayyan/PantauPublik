@@ -21,6 +21,11 @@ Route::get('/', function () {
     return view('welcome', ['title'=>'PantauPublik']);
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('/laporan/create', [LaporanController::class, 'create'])->name('laporan.create');
+    Route::post('/laporan', [LaporanController::class, 'store'])->name('laporan.store');
+});
+
 
 
 Route::get('/laporan', function () {
@@ -67,9 +72,4 @@ Route::get('/pelapor/{user}', function (User $user) {
 
 //Laporan
 
-
-Route::middleware('auth')->group(function () {
-    Route::get('/laporan/create', [LaporanController::class, 'create'])->name('laporan.create');
-    Route::post('/laporan', [LaporanController::class, 'store'])->name('laporan.store');
-});
 
