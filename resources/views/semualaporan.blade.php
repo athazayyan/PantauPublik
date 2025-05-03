@@ -5,7 +5,10 @@
     @foreach ($laporans as $laporan)
         <article class="max-w-2xl mx-4 my-4 overflow-hidden bg-white rounded-lg shadow-lg">
             <div class="p-6 border border-gray-200">
-            <h3 class="text-2xl font-bold text-gray-800 mb-3">{{ $laporan["judul"] }}</h3>
+         <a href="{{ url('/laporan/' . $laporan['id']) }}">
+    <h3 class="text-2xl font-bold text-gray-800 mb-3">{{ $laporan['judul'] }}</h3>
+</a>
+
             <p class="text-gray-600 mb-4">{{ $laporan["deskripsi"] }}</p>
             <div class="grid grid-cols-2 gap-4 text-sm text-gray-600">
                 <div class="flex items-center">
@@ -25,7 +28,10 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
                 <span>Tanggal: {{ $laporan["tanggal"] }}</span>
-                <span>Pelapor: {{ $laporan["pelapor_id"] }}</span>
+                <span >Pelapor: <a href="{{ route('pelapor', $laporan->pelapor->id) }}">
+    {{ $laporan->pelapor->name }}
+</a>
+</span>
                 </div>
             </div>
             </div>

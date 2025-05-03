@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Laporan;
+use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
@@ -49,3 +50,13 @@ Route::get('/laporan/{id}', function ($id) {
         'laporan'=>$laporan
     ]);
 });
+
+Route::get('/pelapor/{user}', function (User $user) {
+    return view('pelapor', [
+        'title' => 'Pelapor',
+        'laporans' => $user->laporans,
+        'user' => $user
+    ]);
+})->name('pelapor');
+
+
