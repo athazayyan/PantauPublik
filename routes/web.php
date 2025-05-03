@@ -4,7 +4,17 @@ use App\Models\Laporan;
 use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LaporanController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+})->name('logout');
 
 
 Route::get('/', function () {
@@ -34,22 +44,17 @@ Route::get('/register', function () {
 });
 
 
-Route::get('/lapor', function () {
-    return view('laporan' , ['title'=>'Lapor']);
 
-});
 
 
 
 Route::get('/laporan/{id}', function ($id) {
-    $laporan = Arr::first(Laporan::all(), function($laporan) use ($id) {
-        return $laporan['id'] == $id;
-    });
+    $laporan = Laporan::with('pelapor')->findOrFail($id); // pastikan relasi 'pelapor' sudah ada di model
     return view('detail', [
-        'title'=>'Detail Laporan',
-        'laporan'=>$laporan
+        'title' => 'Detail Laporan',
+        'laporan' => $laporan
     ]);
-});
+})->name('laporan.show');
 
 Route::get('/pelapor/{user}', function (User $user) {
     return view('pelapor', [
@@ -59,4 +64,12 @@ Route::get('/pelapor/{user}', function (User $user) {
     ]);
 })->name('pelapor');
 
+
+//Laporan
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/laporan/create', [LaporanController::class, 'create'])->name('laporan.create');
+    Route::post('/laporan', [LaporanController::class, 'store'])->name('laporan.store');
+});
 
