@@ -20,6 +20,11 @@ return new class extends Migration
             $table->string('kategori');
             $table->date('tanggal');
             $table->timestamps();
+           $table->foreignId('pelapor_id')->constrained(
+            table: 'users',
+            indexName:
+            'laporans_pelapor_id_foreign'
+           );
         });
     }
 

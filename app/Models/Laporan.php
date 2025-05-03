@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Laporan extends Model
 {
-        protected $fillable = ['judul', 'deskripsi', 'lokasi', 'status', 'kategori', 'tanggal'];
+    use HasFactory;
 
+    protected $fillable = ['judul', 'deskripsi', 'lokasi', 'status', 'kategori', 'tanggal', 'pelapor_id'];
 }
