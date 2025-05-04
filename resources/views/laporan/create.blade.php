@@ -18,40 +18,40 @@
         @csrf
 
         <div>
-            <label for="judul" class="block font-semibold">Judul</label>
-            <input type="text" name="judul" id="judul" class="w-full border border-gray-300 rounded p-2" required>
+            <label for="judul" class="block font-semibold text-amber-50">Judul</label>
+            <input type="text" name="judul" id="judul" class="text-amber-50 w-full border border-gray-300 rounded p-2" required>
         </div>
 
         <div>
-            <label for="deskripsi" class="block font-semibold">Deskripsi</label>
-            <textarea name="deskripsi" id="deskripsi" class="w-full border border-gray-300 rounded p-2" rows="4" required></textarea>
+            <label for="deskripsi" class="block font-semibold text-amber-50">Deskripsi</label>
+            <textarea name="deskripsi" id="deskripsi" class="text-amber-50 w-full border border-gray-300 rounded p-2" rows="4" required></textarea>
         </div>
 
         <div>
-            <label for="lokasi" class="block font-semibold">Lokasi</label>
-            <input type="text" name="lokasi" id="lokasi" class="w-full border border-gray-300 rounded p-2" required>
+            <label for="lokasi" class="block font-semibold text-amber-50">Lokasi</label>
+            <input type="text" name="lokasi" id="lokasi" class="text-amber-50 w-full border border-gray-300 rounded p-2" required>
         </div>
 
         <div>
-            <label for="status" class="block font-semibold">Status</label>
-            <select name="status" id="status" class="w-full border border-gray-300 rounded p-2" required>
-                <option value="Menunggu">Menunggu</option>
-                <option value="Diproses">Diproses</option>
-                <option value="Selesai">Selesai</option>
+            <label for="status" class="block font-semibold text-amber-50">Status</label>
+            <select name="status" id="status" class="text-amber-50 w-full border border-gray-300 rounded p-2" required>
+                <option value="Menunggu" class="text-black">Menunggu</option>
+                <option value="Diproses" class="text-black">Diproses</option>
+                <option value="Selesai" class="text-black" >Selesai</option>
             </select>
         </div>
 
         <div>
-            <label for="kategori" class="block font-semibold">Kategori</label>
-            <input type="text" name="kategori" id="kategori" class="w-full border border-gray-300 rounded p-2" required>
+            <label for="kategori" class="block font-semibold text-amber-50">Kategori</label>
+            <input type="text" name="kategori" id="kategori" class="w-full border border-gray-300 rounded p-2 text-amber-50" required>
         </div>
 
         <div>
-            <label for="tanggal" class="block font-semibold">Tanggal</label>
-            <input type="date" name="tanggal" id="tanggal" class="w-full border border-gray-300 rounded p-2" required>
+            <label for="tanggal" class="block font-semibold text-amber-50">Tanggal</label>
+            <input type="date" name="tanggal" id="tanggal" class="w-full border border-gray-300 rounded p-2 text-amber-50" required>
         </div>
 
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        <button type="submit" class="bg-blue-600  px-4 py-2 rounded hover:bg-blue-700 text-amber-50">
             Kirim Laporan
         </button>
     </form>

@@ -18,8 +18,10 @@
                 <label class="block mb-1">Password</label>
                 <input type="password" name="password" class="w-full border rounded px-3 py-2" required>
             </div>
+            <a href="/register" class="mb-5"><p>
+                Belum Punya Akun?</p></a>
 
-            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mt-3">
                 Login
             </button>
         </form>

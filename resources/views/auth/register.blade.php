@@ -30,8 +30,9 @@
                 <label class="block mb-1">Konfirmasi Password</label>
                 <input type="password" name="password_confirmation" class="w-full border rounded px-3 py-2" required>
             </div>
-
-            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+             <a href="/login" class="mb-5"><p>
+                Sudah Punya Akun?</p></a>
+            <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded  mt-3">
                 Daftar
             </button>
         </form>
