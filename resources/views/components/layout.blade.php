@@ -6,7 +6,9 @@
     @vite('resources/css/app.css')
   </head>
   <body class="bg-black ">
+    {{-- memasukkan navbarnya --}}
    <x-navbar></x-navbar>
+   {{-- memasukkan hero section nya --}}
    <x-header>{{ $title }}</x-header>
     <div class="container mx-auto">
         {{ $slot }}

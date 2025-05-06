@@ -1,5 +1,5 @@
  <!-- Hero Section -->
- <section class="bg-blue-600 rounded-b-3xl p-8 mb-8 ml-10  mr-10">
+ <section class="bg-blue-600 rounded-b-3xl p-8 mb-8 ml-10  mr-10 mt-15">
     <div class="max-w-2xl">
       <h1 class="text-3xl font-bold mb-2">{{ $slot }}</h1>
       <p class="text-green-300 text-xl mb-6">Wujudkan Kota Menjadi #LebihBaik<br>Bersama-Sama</p>
