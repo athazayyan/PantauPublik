@@ -10,9 +10,31 @@ class Laporan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['judul', 'deskripsi', 'lokasi', 'status', 'kategori', 'tanggal', 'pelapor_id'];
+    // Update $fillable
+    protected $fillable = [
+        'judul',
+        'deskripsi',
+        'lokasi',
+        'status',
+        'kategori',
+        'tanggal',
+        'pelapor_id',
+        'lampiran_paths', // Ganti nama kolom
+    ];
 
-    public function pelapor(): BelongsTo{
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        // Cast kolom 'lampiran_paths' ke array PHP secara otomatis
+        'lampiran_paths' => 'array',
+        'tanggal' => 'date', // Pastikan cast lain tetap ada jika perlu
+    ];
+
+    public function pelapor(): BelongsTo
+    {
         return $this->belongsTo(User::class, 'pelapor_id');
     }
 }
