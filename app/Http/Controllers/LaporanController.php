@@ -52,7 +52,7 @@ class LaporanController extends Controller
         'kategori' => 'required|string|max:100',
         'tanggal' => 'required|date',
         'lampiran' => 'nullable|array',
-        'lampiran.*' => 'file|max:5120', // 5MB
+        'lampiran.*' => 'sometimes|image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048', // 2MB
     ]);
 
     // 1. Simpan laporan terlebih dahulu untuk dapat ID
@@ -91,8 +91,8 @@ class LaporanController extends Controller
     /**
      * Display the specified resource.
      */
-     public function show(Laporan $laporan)
-     {
+    public function show(Laporan $laporan)
+{
          // Dengan Route Model Binding, $laporan sudah otomatis di-load.
          // Jika Anda mengakses view ini dan $laporan tidak ditemukan (misal ID salah di URL),
          // Laravel akan otomatis menampilkan halaman 404.
@@ -105,11 +105,5 @@ class LaporanController extends Controller
             'title' => 'Detail Laporan: ' . $laporan->judul, // Menambahkan judul ke title
             'laporan' => $laporan
          ]);
-     }
-    public function show(Laporan $laporan)
-    {
-        return view('laporan.show', compact('laporan'));
-    }
-
-    // Tambahkan method lain jika perlu (edit, update, destroy)
 }
+
