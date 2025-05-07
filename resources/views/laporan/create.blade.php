@@ -28,20 +28,20 @@
         </div>
 
         <div>
-            <label for="lokasi" class="block font-semibold text-amber-50">Lokasi</label>
-            <input type="text" name="lokasi" id="lokasi" value="{{ old('lokasi') }}" class="bg-gray-700 text-amber-50 w-full border border-gray-600 rounded p-2 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
-            <select name="lokasi" id="lokasi" class="text-amber-50 w-full border border-gray-300 rounded p-2" required>
-                <option value="Baiturrahman" class="text-black">Baiturrahman</option>
-                <option value="Banda Raya" class="text-black">Banda Raya</option>
-                <option value="Jaya Baru" class="text-black">Jaya Baru</option>
-                <option value="Kuta Alam" class="text-black">Kuta Alam</option>
-                <option value="Kuta Raja" class="text-black">Kuta Raja</option>
-                <option value="Lueng Bata" class="text-black">Lueng Bata</option>
-                <option value="Meuraxa" class="text-black">Meuraxa</option>
-                <option value="Syiah Kuala" class="text-black">Syiah Kuala</option>
-                <option value="Ulee Kareng" class="text-black">Ulee Kareng</option>
-            </select>
-        </div>
+    <label for="lokasi" class="block font-semibold text-amber-50">Lokasi</label>
+    <select name="lokasi" id="lokasi" class="bg-gray-700 text-amber-50 w-full border border-gray-600 rounded p-2 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
+        <option value="Baiturrahman" @selected(old('lokasi') == 'Baiturrahman')>Baiturrahman</option>
+        <option value="Banda Raya" @selected(old('lokasi') == 'Banda Raya')>Banda Raya</option>
+        <option value="Jaya Baru" @selected(old('lokasi') == 'Jaya Baru')>Jaya Baru</option>
+        <option value="Kuta Alam" @selected(old('lokasi') == 'Kuta Alam')>Kuta Alam</option>
+        <option value="Kuta Raja" @selected(old('lokasi') == 'Kuta Raja')>Kuta Raja</option>
+        <option value="Lueng Bata" @selected(old('lokasi') == 'Lueng Bata')>Lueng Bata</option>
+        <option value="Meuraxa" @selected(old('lokasi') == 'Meuraxa')>Meuraxa</option>
+        <option value="Syiah Kuala" @selected(old('lokasi') == 'Syiah Kuala')>Syiah Kuala</option>
+        <option value="Ulee Kareng" @selected(old('lokasi') == 'Ulee Kareng')>Ulee Kareng</option>
+    </select>
+</div>
+
 
         <div>
             <label for="status" class="block font-semibold text-amber-50">Status</label>

@@ -58,7 +58,7 @@
                     @endif
                 </div>
 
-<a href="{{ url('/laporan') }}" class="btn btn-primary mt-3">Kembali</a>
+                <a href="{{ route('laporan.index') }}" class="btn btn-primary mt-3">Kembali</a>
             </div>
         </div>
     </div>

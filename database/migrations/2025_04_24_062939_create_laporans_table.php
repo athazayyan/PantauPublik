@@ -12,20 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('laporans', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul');
-            $table->text('deskripsi');
-            $table->string('lokasi');
-            $table->string('status');
-            $table->string('kategori');
-            $table->date('tanggal');
-            $table->timestamps();
-           $table->foreignId('pelapor_id')->constrained(
-            table: 'users',
-            indexName:
-            'laporans_pelapor_id_foreign'
-           );
-        });
+    $table->id();
+    $table->string('judul');
+    $table->text('deskripsi');
+    $table->string('lokasi');
+    $table->string('status');
+    $table->string('kategori');
+    $table->date('tanggal');
+$table->text('lampiran')->nullable();
+    $table->timestamps();
+    $table->foreignId('pelapor_id')->constrained(
+        table: 'users',
+        indexName: 'laporans_pelapor_id_foreign'
+    );
+});
+
     }
 
     /**
