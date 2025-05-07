@@ -55,7 +55,40 @@
 
         <div>
             <label for="kategori" class="block font-semibold text-amber-50">Kategori</label>
-            <input type="text" name="kategori" id="kategori" class="w-full border border-gray-300 rounded p-2 text-amber-50" required>
+            <select name="kategori" id="kategori" class="text-amber-50 w-full border border-gray-300 rounded p-2" required>
+                <optgroup label="Jalan dan Jembatan" class="text-black">
+                    <option value="Lubang atau retakan pada jalan raya" class="text-black">Lubang atau retakan pada jalan raya</option>
+                    <option value="Jembatan rusak atau berkarat" class="text-black">Jembatan rusak atau berkarat</option>
+                    <option value="Drainase tersumbat menyebabkan banjir" class="text-black">Drainase tersumbat menyebabkan banjir</option>
+                </optgroup>
+                <optgroup label="Bangunan Publik" class="text-black">
+                    <option value="Dinding retak atau roboh" class="text-black">Dinding retak atau roboh</option>
+                    <option value="Atap bocor atau rusak" class="text-black">Atap bocor atau rusak</option>
+                    <option value="Sistem ventilasi atau AC tidak berfungsi" class="text-black">Sistem ventilasi atau AC tidak berfungsi</option>
+                </optgroup>
+                <optgroup label="Sarana Transportasi" class="text-black">
+                    <option value="Trotoar rusak atau tidak rata" class="text-black">Trotoar rusak atau tidak rata</option>
+                    <option value="Lampu lalu lintas tidak berfungsi" class="text-black">Lampu lalu lintas tidak berfungsi</option>
+                    <option value="Rambu jalan hilang atau rusak" class="text-black">Rambu jalan hilang atau rusak</option>
+                </optgroup>
+                <optgroup label="Saluran Air dan Sanitasi" class="text-black">
+                    <option value="Pipa air pecah atau bocor" class="text-black">Pipa air pecah atau bocor</option>
+                    <option value="Saluran pembuangan mampet" class="text-black">Saluran pembuangan mampet</option>
+                    <option value="Sumber air minum tercemar" class="text-black">Sumber air minum tercemar</option>
+                </optgroup>
+                <optgroup label="Listrik dan Telekomunikasi" class="text-black">
+                    <option value="Kabel listrik putus atau menggantung" class="text-black">Kabel listrik putus atau menggantung</option>
+                    <option value="Tiang listrik miring atau roboh" class="text-black">Tiang listrik miring atau roboh</option>
+                    <option value="Jaringan internet tidak stabil" class="text-black">Jaringan internet tidak stabil</option>
+                </optgroup>
+                <optgroup label="Ruang Publik dan Taman" class="text-black">
+                    <option value="Kursi dan fasilitas taman rusak" class="text-black">Kursi dan fasilitas taman rusak</option>
+                    <option value="Sampah menumpuk dan tidak terkelola" class="text-black">Sampah menumpuk dan tidak terkelola</option>
+                    <option value="Penerangan jalan mati atau kurang" class="text-black">Penerangan jalan mati atau kurang</option>
+                    <option value="Parkir Liar" class="text-black">Parkir Liar</option>
+                    <option value="Lainnya" class="text-black">Lainnya</option>
+                </optgroup>
+            </select>
         </div>
 
         <div>
