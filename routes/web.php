@@ -15,13 +15,16 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('/');
+    return redirect('home')->with('success', 'Logout Berhasil');
 })->name('logout');
 
 
 Route::get('/', function () {
-    return view('welcome', ['title'=>'PantauPublik']);
-});
+    return view('welcome', ['title'=>'PantauPublik',
+'laporans'=>laporan::all(),
+'sekilas'=>laporan::latest()->take(3)->get(),
+'pelapor'=>User::all()]);
+})->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/laporan/create', [LaporanController::class, 'create'])->name('laporan.create');
