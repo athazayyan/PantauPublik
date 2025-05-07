@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Buat Laporan</x-slot:title>
 
-    <h1 class="text-2xl font-bold mb-4">Formulir Laporan Baru</h1>
+    <h1 class="text-2xl font-bold mb-4 text-white"  >Formulir Laporan Baru</h1>
 
     @if ($errors->any())
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
@@ -54,9 +54,9 @@
         </div>
 
         <div>
-            <label for="kategori" class="block font-semibold text-amber-50">Kategori</label>
-            <select name="kategori" id="kategori" class="text-amber-50 w-full border border-gray-300 rounded p-2" required>
-                <optgroup label="Jalan dan Jembatan" class="text-black">
+            <label for="kategori" class="block font-semibold text-white">Kategori</label>
+            <select name="kategori" id="kategori" class="bg-white-700 text-white w-full border border-gray-300 rounded p-2" required>
+                <optgroup label="Jalan dan Jembatan" class="text-black bg-gray- hover:bg-cyan-950">
                     <option value="Lubang atau retakan pada jalan raya" class="text-black">Lubang atau retakan pada jalan raya</option>
                     <option value="Jembatan rusak atau berkarat" class="text-black">Jembatan rusak atau berkarat</option>
                     <option value="Drainase tersumbat menyebabkan banjir" class="text-black">Drainase tersumbat menyebabkan banjir</option>
