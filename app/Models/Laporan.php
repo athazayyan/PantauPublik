@@ -10,7 +10,6 @@ class Laporan extends Model
 {
     use HasFactory;
 
-    // Update $fillable
     protected $fillable = [
         'judul',
         'deskripsi',
@@ -19,18 +18,12 @@ class Laporan extends Model
         'kategori',
         'tanggal',
         'pelapor_id',
-        'lampiran_paths', // Ganti nama kolom
+        'lampiran', // kolom array untuk menyimpan path file
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
     protected $casts = [
-        // Cast kolom 'lampiran_paths' ke array PHP secara otomatis
-        'lampiran_paths' => 'array',
-        'tanggal' => 'date', // Pastikan cast lain tetap ada jika perlu
+        'lampiran' => 'array', // auto-cast ke array
+        'tanggal' => 'date',
     ];
 
     public function pelapor(): BelongsTo

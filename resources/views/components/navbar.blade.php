@@ -17,8 +17,8 @@
 
         @auth
                 <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded">LOGOUT</button>
+                    @csrf
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded cursor-pointer">LOGOUT</button>
                 </form>
         @else
                 <a href="{{ route('login') }}" class="bg-blue-500 text-white px-4 py-1 rounded">MASUK</a>

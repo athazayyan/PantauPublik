@@ -28,20 +28,20 @@
         </div>
 
         <div>
-            <label for="lokasi" class="block font-semibold text-amber-50">Lokasi</label>
-            <input type="text" name="lokasi" id="lokasi" value="{{ old('lokasi') }}" class="bg-gray-700 text-amber-50 w-full border border-gray-600 rounded p-2 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
-            <select name="lokasi" id="lokasi" class="text-amber-50 w-full border border-gray-300 rounded p-2" required>
-                <option value="Baiturrahman" class="text-black">Baiturrahman</option>
-                <option value="Banda Raya" class="text-black">Banda Raya</option>
-                <option value="Jaya Baru" class="text-black">Jaya Baru</option>
-                <option value="Kuta Alam" class="text-black">Kuta Alam</option>
-                <option value="Kuta Raja" class="text-black">Kuta Raja</option>
-                <option value="Lueng Bata" class="text-black">Lueng Bata</option>
-                <option value="Meuraxa" class="text-black">Meuraxa</option>
-                <option value="Syiah Kuala" class="text-black">Syiah Kuala</option>
-                <option value="Ulee Kareng" class="text-black">Ulee Kareng</option>
-            </select>
-        </div>
+    <label for="lokasi" class="block font-semibold text-amber-50">Lokasi</label>
+    <select name="lokasi" id="lokasi" class="bg-gray-700 text-amber-50 w-full border border-gray-600 rounded p-2 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
+        <option value="Baiturrahman" @selected(old('lokasi') == 'Baiturrahman')>Baiturrahman</option>
+        <option value="Banda Raya" @selected(old('lokasi') == 'Banda Raya')>Banda Raya</option>
+        <option value="Jaya Baru" @selected(old('lokasi') == 'Jaya Baru')>Jaya Baru</option>
+        <option value="Kuta Alam" @selected(old('lokasi') == 'Kuta Alam')>Kuta Alam</option>
+        <option value="Kuta Raja" @selected(old('lokasi') == 'Kuta Raja')>Kuta Raja</option>
+        <option value="Lueng Bata" @selected(old('lokasi') == 'Lueng Bata')>Lueng Bata</option>
+        <option value="Meuraxa" @selected(old('lokasi') == 'Meuraxa')>Meuraxa</option>
+        <option value="Syiah Kuala" @selected(old('lokasi') == 'Syiah Kuala')>Syiah Kuala</option>
+        <option value="Ulee Kareng" @selected(old('lokasi') == 'Ulee Kareng')>Ulee Kareng</option>
+    </select>
+</div>
+
 
         <div>
             <label for="status" class="block font-semibold text-amber-50">Status</label>
@@ -55,7 +55,40 @@
 
         <div>
             <label for="kategori" class="block font-semibold text-amber-50">Kategori</label>
-            <input type="text" name="kategori" id="kategori" value="{{ old('kategori') }}" class="bg-gray-700 w-full border border-gray-600 rounded p-2 text-amber-50 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
+            <select name="kategori" id="kategori" class="text-amber-50 w-full border border-gray-300 rounded p-2" required>
+                <optgroup label="Jalan dan Jembatan" class="text-black">
+                    <option value="Lubang atau retakan pada jalan raya" class="text-black">Lubang atau retakan pada jalan raya</option>
+                    <option value="Jembatan rusak atau berkarat" class="text-black">Jembatan rusak atau berkarat</option>
+                    <option value="Drainase tersumbat menyebabkan banjir" class="text-black">Drainase tersumbat menyebabkan banjir</option>
+                </optgroup>
+                <optgroup label="Bangunan Publik" class="text-black">
+                    <option value="Dinding retak atau roboh" class="text-black">Dinding retak atau roboh</option>
+                    <option value="Atap bocor atau rusak" class="text-black">Atap bocor atau rusak</option>
+                    <option value="Sistem ventilasi atau AC tidak berfungsi" class="text-black">Sistem ventilasi atau AC tidak berfungsi</option>
+                </optgroup>
+                <optgroup label="Sarana Transportasi" class="text-black">
+                    <option value="Trotoar rusak atau tidak rata" class="text-black">Trotoar rusak atau tidak rata</option>
+                    <option value="Lampu lalu lintas tidak berfungsi" class="text-black">Lampu lalu lintas tidak berfungsi</option>
+                    <option value="Rambu jalan hilang atau rusak" class="text-black">Rambu jalan hilang atau rusak</option>
+                </optgroup>
+                <optgroup label="Saluran Air dan Sanitasi" class="text-black">
+                    <option value="Pipa air pecah atau bocor" class="text-black">Pipa air pecah atau bocor</option>
+                    <option value="Saluran pembuangan mampet" class="text-black">Saluran pembuangan mampet</option>
+                    <option value="Sumber air minum tercemar" class="text-black">Sumber air minum tercemar</option>
+                </optgroup>
+                <optgroup label="Listrik dan Telekomunikasi" class="text-black">
+                    <option value="Kabel listrik putus atau menggantung" class="text-black">Kabel listrik putus atau menggantung</option>
+                    <option value="Tiang listrik miring atau roboh" class="text-black">Tiang listrik miring atau roboh</option>
+                    <option value="Jaringan internet tidak stabil" class="text-black">Jaringan internet tidak stabil</option>
+                </optgroup>
+                <optgroup label="Ruang Publik dan Taman" class="text-black">
+                    <option value="Kursi dan fasilitas taman rusak" class="text-black">Kursi dan fasilitas taman rusak</option>
+                    <option value="Sampah menumpuk dan tidak terkelola" class="text-black">Sampah menumpuk dan tidak terkelola</option>
+                    <option value="Penerangan jalan mati atau kurang" class="text-black">Penerangan jalan mati atau kurang</option>
+                    <option value="Parkir Liar" class="text-black">Parkir Liar</option>
+                    <option value="Lainnya" class="text-black">Lainnya</option>
+                </optgroup>
+            </select>
         </div>
 
         <div>

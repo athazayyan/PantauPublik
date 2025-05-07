@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
-// Auth Routes
-Route::post('/login', [LoginController::class, 'login'])->name('login.submit'); // Beri nama berbeda jika route GET /login juga ada
-Route::post('/register', [RegisterController::class, 'register'])->name('register.submit'); // Beri nama berbeda
+
+
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/logout', function () {
     Auth::logout();
     request()->session()->invalidate();
@@ -58,9 +59,10 @@ Route::get('/laporan', function () {
 /*
 Route::get('/laporan/{id}', function ($id) {
     $laporan = Laporan::with('pelapor')->findOrFail($id);
+
     return view('detail', [
         'title' => 'Detail Laporan',
-        'laporan' => $laporan
+        'laporan' => $laporan,
     ]);
 })->name('laporan.show'); // Akan konflik nama dengan route controller
 */
