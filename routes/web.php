@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
+
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/logout', function () {
@@ -54,7 +55,7 @@ Route::get('/register', function () {
 
 
 Route::get('/laporan/{id}', function ($id) {
-    $laporan = Laporan::with('pelapor')->findOrFail($id); // pastikan relasi 'pelapor' sudah ada di model
+    $laporan = Laporan::with('pelapor')->findOrFail($id);
     return view('detail', [
         'title' => 'Detail Laporan',
         'laporan' => $laporan
