@@ -13,5 +13,7 @@
     <div class="container mx-auto">
         {{ $slot }}
     </div>
+    {{-- memasukkan footer --}}
+    <x-footer></x-footer>
   </body>
 </html>
