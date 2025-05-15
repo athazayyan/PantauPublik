@@ -20,7 +20,7 @@ class LaporanFactory extends Factory
            'judul' => $this->faker->sentence,
             'deskripsi' => $this->faker->paragraph,
             'lokasi' => $this->faker->address,
-            'status' => $this->faker->randomElement(['pending', 'in_progress', 'resolved']),
+            'status' => $this->faker->randomElement(['Ringan', 'Sedang', 'Berat']),
             'kategori' => $this->faker->randomElement(['kebersihan', 'keamanan', 'infrastruktur', 'kesehatan', 'pendidikan', 'lingkungan']),
             'tanggal' => $this->faker->date,
             'pelapor_id' => \App\Models\User::factory(),

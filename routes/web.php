@@ -15,6 +15,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/logout', function () {
     Auth::logout();
+    return redirect('home')->with('success', 'Logout Berhasil');
     request()->session()->invalidate();
     request()->session()->regenerateToken();
     return redirect('/');
@@ -31,8 +32,11 @@ Route::get('/register', function () {
 
 // Home Page
 Route::get('/', function () {
-    return view('welcome', ['title'=>'PantauPublik']);
-});
+    return view('welcome', ['title'=>'PantauPublik',
+'laporans'=>laporan::all(),
+'sekilas'=>laporan::latest()->take(3)->get(),
+'pelapor'=>User::all()]);
+})->name('home');
 
 // Laporan Routes (Grupkan yang memerlukan auth)
 Route::middleware(['auth'])->group(function () {

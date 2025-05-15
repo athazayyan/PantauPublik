@@ -40,12 +40,16 @@
                     @endif
 
                     <div class="p-4">
-                        <h3 class="text-lg font-bold text-gray-800 mb-2">#{{ $laporan->id }} - {{ $laporan->judul }}</h3>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2"> {{ $laporan->judul }}</h3>
                         <p class="text-sm text-gray-600 mb-1"><strong>Tanggal:</strong> {{ $laporan->tanggal->format('d M Y') }}</p>
                         <p class="text-sm text-gray-600 mb-1"><strong>Status:</strong> {{ $laporan->status }}</p>
                         <p class="text-sm text-gray-600 mb-1"><strong>Lokasi:</strong> {{ $laporan->lokasi }}</p>
                         <p class="text-sm text-gray-600 mb-1"><strong>Kategori:</strong> {{ $laporan->kategori }}</p>
-
+                        <p> Dilaporkan oleh
+                        <a href="{{ route('pelapor', $laporan->pelapor->id) }}" class="inline-block mt-3 text-blue-600 hover:underline text-sm">
+                            {{ $laporan->pelapor->name }}
+                        </a>
+                        </p>
                         <a href="{{ route('laporan.show', $laporan->id) }}" class="inline-block mt-3 text-blue-600 hover:underline text-sm">
                             Lihat Detail
                         </a>

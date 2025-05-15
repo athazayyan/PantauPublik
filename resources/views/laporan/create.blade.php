@@ -47,9 +47,9 @@
             <label for="status" class="block font-semibold text-amber-50">Status</label>
             <select name="status" id="status" class="bg-gray-700 text-amber-50 w-full border border-gray-600 rounded p-2 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
                  {{-- Opsi Menunggu dipilih jika old('status') adalah 'Menunggu' atau jika old('status') kosong (nilai default) --}}
-                <option value="Menunggu" class="text-black" @selected(old('status', 'Menunggu') == 'Menunggu')>Menunggu</option>
-                <option value="Diproses" class="text-black" @selected(old('status') == 'Diproses')>Diproses</option>
-                <option value="Selesai" class="text-black" @selected(old('status') == 'Selesai')>Selesai</option>
+                <option value="Ringan" class="text-black" @selected(old('status', 'Ringan') == 'Ringan')>Ringan</option>
+                <option value="Sedang" class="text-black" @selected(old('status') == 'Sedang')>Sedang</option>
+                <option value="Berat" class="text-black" @selected(old('status') == 'Berat')>Berat</option>
             </select>
         </div>
 
