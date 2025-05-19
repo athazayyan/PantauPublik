@@ -76,4 +76,72 @@ class LaporanController extends Controller
         return view('laporan.show', compact('laporan'));
     }
 
+    public function edit(Laporan $laporan)
+    {
+        return view('laporan.edit', [
+            'title' => 'Edit Laporan',
+            'laporan' => $laporan,
+        ]);
+    }
+    public function update(Request $request, Laporan $laporan)
+{
+    $validated = $request->validate([
+        'judul' => 'required|string|max:255',
+        'deskripsi' => 'required|string',
+        'lokasi' => 'required|string|max:255',
+        'status' => 'required|string|max:50',
+        'kategori' => 'required|string|max:100',
+        'tanggal' => 'required|date',
+        'lampiran' => 'nullable|array',
+        'lampiran.*' => 'file|max:5120', // 5MB
+    ]);
+
+    // Update data laporan
+    $laporan->update([
+        'judul' => $validated['judul'],
+        'deskripsi' => $validated['deskripsi'],
+        'lokasi' => $validated['lokasi'],
+        'status' => $validated['status'],
+        'kategori' => $validated['kategori'],
+        'tanggal' => $validated['tanggal'],
+    ]);
+
+    // Jika ada file baru, simpan
+    if ($request->hasFile('lampiran')) {
+        $lampiranPaths = [];
+
+        foreach ($request->file('lampiran') as $index => $file) {
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $laporan->id . '_' . ($index + 1) . '.' . $extension;
+            $path = $file->storeAs('lampiran', $fileName, 'public');
+            $lampiranPaths[] = $path;
+        }
+
+        // Update lampiran
+        $laporan->update([
+            'lampiran' => json_encode($lampiranPaths),
+        ]);
+    }
+
+    return redirect()->route('laporan.show', $laporan->id)
+                     ->with('success', 'Laporan berhasil diperbarui!');
+
+                    }
+    public function destroy(Laporan $laporan)
+    {
+        // Hapus lampiran dari storage
+        $lampiranPaths = is_string($laporan->lampiran) ? json_decode($laporan->lampiran, true) : [];
+        if ($lampiranPaths) {
+            foreach ($lampiranPaths as $path) {
+                Storage::disk('public')->delete($path);
+            }
+        }
+
+        // Hapus laporan
+        $laporan->delete();
+
+        return redirect()->route('home')
+                         ->with('success', 'Laporan berhasil dihapus!');
+    }
+
 }

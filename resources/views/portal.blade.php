@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:title>{{ $title }}</x-slot>
+    <x-slot:title>{{ $title }}</x-slot:title>
 
     <div class="bg-gray-50 min-h-screen">
         <!-- Header Section -->
@@ -48,7 +48,7 @@
                                     </dt>
                                     <dd>
                                         <div class="text-lg font-bold text-gray-900">
-                                            {{ $totalLaporan ?? '1,254' }}
+                                            {{ $totalLaporan }}
                                         </div>
                                     </dd>
                                 </dl>
@@ -57,11 +57,11 @@
                     </div>
                 </div>
 
-                <!-- Pending Reports Card -->
+                <!-- Ringan Reports Card -->
                 <div class="bg-white overflow-hidden shadow rounded-lg">
                     <div class="px-4 py-5 sm:p-6">
                         <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-yellow-500 rounded-md p-3">
+                            <div class="flex-shrink-0 bg-gray-500 rounded-md p-3">
                                 <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -69,11 +69,11 @@
                             <div class="ml-5 w-0 flex-1">
                                 <dl>
                                     <dt class="text-sm font-medium text-gray-500 truncate">
-                                        Menunggu Proses
+                                        Ringan
                                     </dt>
                                     <dd>
                                         <div class="text-lg font-bold text-gray-900">
-                                            {{ $pendingLaporan ?? '352' }}
+                                            {{ $ringanLaporan }}
                                         </div>
                                     </dd>
                                 </dl>
@@ -82,11 +82,11 @@
                     </div>
                 </div>
 
-                <!-- In Progress Reports Card -->
+                <!-- Sedang Reports Card -->
                 <div class="bg-white overflow-hidden shadow rounded-lg">
                     <div class="px-4 py-5 sm:p-6">
                         <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                            <div class="flex-shrink-0 bg-yellow-500 rounded-md p-3">
                                 <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                                 </svg>
@@ -94,11 +94,11 @@
                             <div class="ml-5 w-0 flex-1">
                                 <dl>
                                     <dt class="text-sm font-medium text-gray-500 truncate">
-                                        Sedang Diproses
+                                        Sedang
                                     </dt>
                                     <dd>
                                         <div class="text-lg font-bold text-gray-900">
-                                            {{ $inProgressLaporan ?? '521' }}
+                                            {{ $sedangLaporan }}
                                         </div>
                                     </dd>
                                 </dl>
@@ -107,11 +107,11 @@
                     </div>
                 </div>
 
-                <!-- Completed Reports Card -->
+                <!-- Berat Reports Card -->
                 <div class="bg-white overflow-hidden shadow rounded-lg">
                     <div class="px-4 py-5 sm:p-6">
                         <div class="flex items-center">
-                            <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
+                            <div class="flex-shrink-0 bg-red-500 rounded-md p-3">
                                 <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -119,11 +119,11 @@
                             <div class="ml-5 w-0 flex-1">
                                 <dl>
                                     <dt class="text-sm font-medium text-gray-500 truncate">
-                                        Selesai
+                                        Berat
                                     </dt>
                                     <dd>
                                         <div class="text-lg font-bold text-gray-900">
-                                            {{ $completedLaporan ?? '381' }}
+                                            {{ $beratLaporan }}
                                         </div>
                                     </dd>
                                 </dl>
@@ -181,32 +181,32 @@
                         </h3>
 
                         <!-- Filters -->
-                        <div class="mt-4 md:mt-0 flex flex-col sm:flex-row gap-3">
-                            <select class="form-select block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                                <option selected>Semua Kategori</option>
-                                <option>Infrastruktur</option>
-                                <option>Lingkungan</option>
-                                <option>Keamanan</option>
-                                <option>Layanan Publik</option>
-                                <option>Lainnya</option>
+                        <form method="GET" action="{{ route('portal.index') }}" class="mt-4 md:mt-0 flex flex-col sm:flex-row gap-3">
+                            <select name="filter_kategori" class="form-select block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                                <option value="">Semua Kategori</option>
+                                @foreach (array_keys($categoryData) as $kategori)
+                                    <option value="{{ $kategori }}" @selected(request('filter_kategori') == $kategori)>{{ $kategori }}</option>
+                                @endforeach
                             </select>
 
-                            <select class="form-select block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                                <option selected>Semua Wilayah</option>
-                                <option>Jakarta Pusat</option>
-                                <option>Jakarta Barat</option>
-                                <option>Jakarta Timur</option>
-                                <option>Jakarta Utara</option>
-                                <option>Jakarta Selatan</option>
+                            <select name="filter_lokasi" class="form-select block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                                <option value="">Semua Wilayah</option>
+                                @foreach (array_keys($regionData) as $lokasi)
+                                    <option value="{{ $lokasi }}" @selected(request('filter_lokasi') == $lokasi)>{{ $lokasi }}</option>
+                                @endforeach
                             </select>
 
-                            <select class="form-select block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                                <option selected>Semua Status</option>
-                                <option>Menunggu</option>
-                                <option>Diproses</option>
-                                <option>Selesai</option>
+                            <select name="filter_status" class="form-select block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                                <option value="">Semua Status</option>
+                                <option value="Ringan" @selected(request('filter_status') == 'Ringan')>Ringan</option>
+                                <option value="Sedang" @selected(request('filter_status') == 'Sedang')>Sedang</option>
+                                <option value="Berat" @selected(request('filter_status') == 'Berat')>Berat</option>
                             </select>
-                        </div>
+
+                            <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Filter
+                            </button>
+                        </form>
                     </div>
 
                     <!-- Table -->
@@ -238,7 +238,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-gray-200">
-                                            @forelse ($recentLaporan ?? [] as $laporan)
+                                            @forelse ($recentLaporan as $laporan)
                                                 <tr>
                                                     <td class="px-6 py-4 whitespace-nowrap">
                                                         <div class="text-sm font-medium text-gray-900">{{ $laporan->judul }}</div>
@@ -250,14 +250,14 @@
                                                         <div class="text-sm text-gray-900">{{ $laporan->lokasi }}</div>
                                                     </td>
                                                     <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-900">{{ $laporan->tanggal }}</div>
+                                                        <div class="text-sm text-gray-900">{{ \Carbon\Carbon::parse($laporan->tanggal)->translatedFormat('d M Y') }}</div>
                                                     </td>
                                                     <td class="px-6 py-4 whitespace-nowrap">
-                                                        @if($laporan->status == 'Selesai')
-                                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                        @if($laporan->status == 'Berat')
+                                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                                                                 {{ $laporan->status }}
                                                             </span>
-                                                        @elseif($laporan->status == 'Diproses')
+                                                        @elseif($laporan->status == 'Sedang')
                                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
                                                                 {{ $laporan->status }}
                                                             </span>
@@ -272,71 +272,9 @@
                                                     </td>
                                                 </tr>
                                             @empty
-                                                <!-- Sample data for preview -->
                                                 <tr>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm font-medium text-gray-900">Jalan Rusak di Kemang</div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-900">Infrastruktur</div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-900">Jakarta Selatan</div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-900">2 Mei 2025</div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                                            Diproses
-                                                        </span>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                        <a href="#" class="text-blue-600 hover:text-blue-900">Detail</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm font-medium text-gray-900">Banjir di Kelurahan Jati</div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-900">Lingkungan</div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-900">Jakarta Timur</div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-900">1 Mei 2025</div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                            Selesai
-                                                        </span>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                        <a href="#" class="text-blue-600 hover:text-blue-900">Detail</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm font-medium text-gray-900">Lampu Jalan Mati di Sudirman</div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-900">Infrastruktur</div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-900">Jakarta Pusat</div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-900">30 April 2025</div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
-                                                            Menunggu
-                                                        </span>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                        <a href="#" class="text-blue-600 hover:text-blue-900">Detail</a>
+                                                    <td colspan="6" class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                                                        Tidak ada laporan terbaru.
                                                     </td>
                                                 </tr>
                                             @endforelse
@@ -353,39 +291,11 @@
                             <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                                 <div>
                                     <p class="text-sm text-gray-700">
-                                        Menampilkan <span class="font-medium">1</span> sampai <span class="font-medium">10</span> dari <span class="font-medium">{{ $totalLaporan ?? '1,254' }}</span> laporan
+                                        Menampilkan <span class="font-medium">{{ $recentLaporan->firstItem() }}</span> sampai <span class="font-medium">{{ $recentLaporan->lastItem() }}</span> dari <span class="font-medium">{{ $recentLaporan->total() }}</span> laporan
                                     </p>
                                 </div>
                                 <div>
-                                    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                                            <span class="sr-only">Previous</span>
-                                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                                            </svg>
-                                        </a>
-                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                                            1
-                                        </a>
-                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-blue-50 text-sm font-medium text-blue-600 hover:bg-blue-100">
-                                            2
-                                        </a>
-                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                                            3
-                                        </a>
-                                        <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
-                                            ...
-                                        </span>
-                                        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                                            10
-                                        </a>
-                                        <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                                            <span class="sr-only">Next</span>
-                                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                            </svg>
-                                        </a>
-                                    </nav>
+                                    {{ $recentLaporan->appends(request()->query())->links() }}
                                 </div>
                             </div>
                         </div>
@@ -404,10 +314,10 @@
             var categoryChart = new Chart(ctxCategory, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Infrastruktur', 'Lingkungan', 'Keamanan', 'Layanan Publik', 'Lainnya'],
+                    labels: @json(array_keys($categoryData)),
                     datasets: [{
                         label: 'Laporan berdasarkan Kategori',
-                        data: [450, 320, 180, 250, 54],
+                        data: @json(array_values($categoryData)),
                         backgroundColor: [
                             'rgba(54, 162, 235, 0.8)',
                             'rgba(75, 192, 192, 0.8)',
@@ -434,10 +344,10 @@
             var regionChart = new Chart(ctxRegion, {
                 type: 'bar',
                 data: {
-                    labels: ['Jakarta Pusat', 'Jakarta Barat', 'Jakarta Timur', 'Jakarta Utara', 'Jakarta Selatan'],
+                    labels: @json(array_keys($regionData)),
                     datasets: [{
                         label: 'Jumlah Laporan',
-                        data: [280, 190, 340, 195, 249],
+                        data: @json(array_values($regionData)),
                         backgroundColor: 'rgba(54, 162, 235, 0.8)',
                         borderWidth: 1
                     }]
@@ -458,22 +368,13 @@
             var trendChart = new Chart(ctxTrend, {
                 type: 'line',
                 data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+                    labels: @json(array_keys($monthlyTotals)),
                     datasets: [
                         {
                             label: 'Total Laporan',
-                            data: [65, 78, 90, 105, 112, 124, 132, 140, 145, 154, 0, 0],
+                            data: @json(array_values($monthlyTotals)),
                             backgroundColor: 'rgba(54, 162, 235, 0.2)',
                             borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 2,
-                            fill: true,
-                            tension: 0.3
-                        },
-                        {
-                            label: 'Laporan Selesai',
-                            data: [40, 52, 67, 81, 86, 94, 102, 112, 118, 125, 0, 0],
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
                             borderWidth: 2,
                             fill: true,
                             tension: 0.3

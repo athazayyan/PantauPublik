@@ -106,9 +106,9 @@
                 id="lampiran"
                 class="block w-full text-sm text-gray-400 border border-gray-600 rounded cursor-pointer bg-gray-700 focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600 p-1"
                 multiple {{-- Atribut untuk mengizinkan multiple file --}}
-                accept="image/*,application/pdf,.doc,.docx" {{-- Opsional: Batasi tipe file --}}
+                accept="image/*" {{-- Opsional: Batasi tipe file --}}
                 >
-             <p class="mt-1 text-sm text-gray-400" id="file_input_help">Contoh: PNG, JPG, PDF, DOCX (MAX. 5MB per file).</p> {{-- Opsional: Tambahkan hint --}}
+             <p class="mt-1 text-sm text-gray-400" id="file_input_help">Contoh: PNG, JPG, (MAX. 5MB per file).</p> {{-- Opsional: Tambahkan hint --}}
         </div>
         {{-- === AKHIR BAGIAN INPUT FILE === --}}
 
