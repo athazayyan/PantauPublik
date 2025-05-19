@@ -8,10 +8,12 @@ use App\Http\Controllers\LaporanController; // Pastikan ini di-import
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Livewire\LaporanDashboard;
 
 
 
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit'); // Ganti nama menjadi 'login.submit' untuk lebih jelas
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/logout', function () {
     Auth::logout();
@@ -52,30 +54,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-// HAPUS ATAU KOMENTARI INI KARENA SUDAH DITANGANI OLEH CONTROLLER DI ATAS
-/*
-Route::get('/laporan', function () {
-    return view('semualaporan', ['title'=>'laporan', 'laporans'=>Laporan::all()]);
-});
-*/
-
-// HAPUS ATAU KOMENTARI INI KARENA SUDAH DITANGANI OLEH CONTROLLER DI ATAS
-/*
-Route::get('/laporan/{id}', function ($id) {
-    $laporan = Laporan::with('pelapor')->findOrFail($id);
-
-    return view('detail', [
-        'title' => 'Detail Laporan',
-        'laporan' => $laporan,
-    ]);
-})->name('laporan.show'); // Akan konflik nama dengan route controller
-*/
 
 
-// Portal Route
-Route::get('/portal', function () {
-    return view('portal', ['title'=>'Portal']);
-});
+Route::get('/portal', \App\Http\Livewire\LaporanDashboard::class) // atau LaporanDashboard::class jika sudah di-use
+    ->name('laporan.dashboard');
 
 // Profil Pelapor Route
 Route::get('/pelapor/{user}', function (User $user) {

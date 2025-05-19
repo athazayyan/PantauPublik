@@ -71,7 +71,7 @@
                         <p class="text-sm text-gray-600 mb-1"><strong>Lokasi:</strong> {{ $nilai->lokasi }}</p>
                         <p class="text-sm text-gray-600 mb-1"><strong>Kategori:</strong> {{ $nilai->kategori }}</p>
                         <p> Dilaporkan oleh
-                        <a href="{{ route('pelapor', $nilai->pelapor->id) }}" class="inline-block mt-3 text-blue-600 hover:underline text-sm">
+                        <a href="{{ route('pelapor.profil', $nilai->pelapor->id) }}" class="inline-block mt-3 text-blue-600 hover:underline text-sm">
                             {{ $nilai->pelapor->name }}
                         </a>
                         </p>

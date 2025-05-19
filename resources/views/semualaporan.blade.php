@@ -46,7 +46,7 @@
                         <p class="text-sm text-gray-600 mb-1"><strong>Lokasi:</strong> {{ $laporan->lokasi }}</p>
                         <p class="text-sm text-gray-600 mb-1"><strong>Kategori:</strong> {{ $laporan->kategori }}</p>
                         <p> Dilaporkan oleh
-                        <a href="{{ route('pelapor', $laporan->pelapor->id) }}" class="inline-block mt-3 text-blue-600 hover:underline text-sm">
+                        <a href="{{ route('pelapor.profil', $laporan->pelapor->id) }}" class="inline-block mt-3 text-blue-600 hover:underline text-sm">
                             {{ $laporan->pelapor->name }}
                         </a>
                         </p>

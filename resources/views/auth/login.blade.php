@@ -17,7 +17,7 @@
                 <div class="mb-4 text-red-500">{{ session('error') }}</div>
             @endif
 
-            <form action="{{ route('login') }}" method="POST">
+            <form action="{{ route('login.submit') }}" method="POST">
                 @csrf
                 <div class="mb-4">
                     <input type="email" name="email" id="email" placeholder="Email" required

@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class LaporanController extends Controller
-{
+class LaporanController extends Controller{
     /**
      * Display a listing of the resource.
      * Menampilkan daftar semua laporan.
@@ -92,7 +91,7 @@ class LaporanController extends Controller
      * Display the specified resource.
      */
     public function show(Laporan $laporan)
-{
+    {
          // Dengan Route Model Binding, $laporan sudah otomatis di-load.
          // Jika Anda mengakses view ini dan $laporan tidak ditemukan (misal ID salah di URL),
          // Laravel akan otomatis menampilkan halaman 404.
@@ -105,5 +104,6 @@ class LaporanController extends Controller
             'title' => 'Detail Laporan: ' . $laporan->judul, // Menambahkan judul ke title
             'laporan' => $laporan
          ]);
-}
+    }
 
+}

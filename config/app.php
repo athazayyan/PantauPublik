@@ -122,5 +122,72 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+// config/app.php
+
+// ... (konfigurasi lainnya) ...
+
+'providers' => [
+
+    /*
+     * Laravel Framework Service Providers...
+     */
+    Illuminate\Auth\AuthServiceProvider::class,
+    Illuminate\Broadcasting\BroadcastServiceProvider::class, // Komentari jika tidak dipakai
+    Illuminate\Bus\BusServiceProvider::class,
+    Illuminate\Cache\CacheServiceProvider::class,
+    Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
+    Illuminate\Cookie\CookieServiceProvider::class,
+    Illuminate\Database\DatabaseServiceProvider::class,
+    Illuminate\Encryption\EncryptionServiceProvider::class,
+    Illuminate\Filesystem\FilesystemServiceProvider::class,
+    Illuminate\Foundation\Providers\FoundationServiceProvider::class,
+    Illuminate\Hashing\HashServiceProvider::class,
+    Illuminate\Mail\MailServiceProvider::class,
+    Illuminate\Notifications\NotificationServiceProvider::class,
+    Illuminate\Pagination\PaginationServiceProvider::class,
+    Illuminate\Pipeline\PipelineServiceProvider::class,
+    Illuminate\Queue\QueueServiceProvider::class,
+    Illuminate\Redis\RedisServiceProvider::class, // Komentari jika tidak dipakai
+    Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
+    Illuminate\Session\SessionServiceProvider::class,
+    Illuminate\Translation\TranslationServiceProvider::class,
+    Illuminate\Validation\ValidationServiceProvider::class,
+    Illuminate\View\ViewServiceProvider::class,
+
+    /*
+     * Package Service Providers...
+     */
+
+    /*
+     * Application Service Providers...
+     */
+    App\Providers\AppServiceProvider::class,
+    // App\Providers\BroadcastServiceProvider::class, // Ini duplikat, hapus jika sudah ada di atas
+    App\Providers\EventServiceProvider::class,
+    App\Providers\RouteServiceProvider::class,
+
+    // TAMBAHKAN SERVICE PROVIDER LIVEWIRE DI SINI:
+    Livewire\LivewireServiceProvider::class,
+
+],
+
+/*
+|--------------------------------------------------------------------------
+| Class Aliases
+|--------------------------------------------------------------------------
+*/
+
+'aliases' => [ // Jika menggunakan format lama, jika baru 'aliases' => Facade::defaultAliases()->merge([...])->toArray(),
+
+    'App' => Illuminate\Support\Facades\App::class,
+    'Arr' => Illuminate\Support\Arr::class,
+    // ... banyak alias lainnya ...
+    'View' => Illuminate\Support\Facades\View::class,
+
+    // Anda bisa menambahkan alias untuk Livewire di sini jika mau
+    // 'Livewire' => Livewire\Livewire::class,
+
+],
 
 ];
+
