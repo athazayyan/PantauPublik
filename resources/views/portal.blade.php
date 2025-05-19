@@ -1,39 +1,15 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <div class="bg-gray-50 min-h-screen">
-        <!-- Header Section -->
-        <div class="bg-white shadow-sm">
-            <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                    <div class="flex-1 min-w-0">
-                        <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-                            Portal Laporan
-                        </h1>
-                        <p class="mt-1 text-sm text-gray-500">
-                            Analisis dan visualisasi data laporan masyarakat
-                        </p>
-                    </div>
-                    <div class="mt-4 flex md:mt-0 md:ml-4">
-                        <span class="ml-3 inline-flex rounded-md shadow-sm">
-                            <a href="{{ route('laporan.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                                </svg>
-                                Buat Laporan Baru
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class=" min-h-screen">
+     
 
         <!-- Content Section -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <!-- Statistics Cards -->
-            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 <!-- Total Reports Card -->
-                <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200">
                     <div class="px-4 py-5 sm:p-6">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
@@ -43,11 +19,11 @@
                             </div>
                             <div class="ml-5 w-0 flex-1">
                                 <dl>
-                                    <dt class="text-sm font-medium text-gray-500 truncate">
+                                    <dt class="text-sm font-medium text-gray-600 truncate">
                                         Total Laporan
                                     </dt>
                                     <dd>
-                                        <div class="text-lg font-bold text-gray-900">
+                                        <div class="text-2xl font-bold text-gray-900">
                                             {{ $totalLaporan }}
                                         </div>
                                     </dd>
@@ -58,7 +34,7 @@
                 </div>
 
                 <!-- Ringan Reports Card -->
-                <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200">
                     <div class="px-4 py-5 sm:p-6">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 bg-gray-500 rounded-md p-3">
@@ -68,11 +44,11 @@
                             </div>
                             <div class="ml-5 w-0 flex-1">
                                 <dl>
-                                    <dt class="text-sm font-medium text-gray-500 truncate">
+                                    <dt class="text-sm font-medium text-gray-600 truncate">
                                         Ringan
                                     </dt>
                                     <dd>
-                                        <div class="text-lg font-bold text-gray-900">
+                                        <div class="text-2xl font-bold text-gray-900">
                                             {{ $ringanLaporan }}
                                         </div>
                                     </dd>
@@ -83,7 +59,7 @@
                 </div>
 
                 <!-- Sedang Reports Card -->
-                <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200">
                     <div class="px-4 py-5 sm:p-6">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 bg-yellow-500 rounded-md p-3">
@@ -93,11 +69,11 @@
                             </div>
                             <div class="ml-5 w-0 flex-1">
                                 <dl>
-                                    <dt class="text-sm font-medium text-gray-500 truncate">
+                                    <dt class="text-sm font-medium text-gray-600 truncate">
                                         Sedang
                                     </dt>
                                     <dd>
-                                        <div class="text-lg font-bold text-gray-900">
+                                        <div class="text-2xl font-bold text-gray-900">
                                             {{ $sedangLaporan }}
                                         </div>
                                     </dd>
@@ -108,7 +84,7 @@
                 </div>
 
                 <!-- Berat Reports Card -->
-                <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200">
                     <div class="px-4 py-5 sm:p-6">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 bg-red-500 rounded-md p-3">
@@ -118,11 +94,11 @@
                             </div>
                             <div class="ml-5 w-0 flex-1">
                                 <dl>
-                                    <dt class="text-sm font-medium text-gray-500 truncate">
+                                    <dt class="text-sm font-medium text-gray-600 truncate">
                                         Berat
                                     </dt>
                                     <dd>
-                                        <div class="text-lg font-bold text-gray-900">
+                                        <div class="text-2xl font-bold text-gray-900">
                                             {{ $beratLaporan }}
                                         </div>
                                     </dd>
@@ -136,9 +112,9 @@
             <!-- Charts Section -->
             <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
                 <!-- Reports by Category Chart -->
-                <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-200">
                     <div class="px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        <h3 class="text-xl leading-6 font-bold text-gray-900">
                             Laporan Berdasarkan Kategori
                         </h3>
                     </div>
@@ -148,9 +124,9 @@
                 </div>
 
                 <!-- Reports by Region Chart -->
-                <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-200">
                     <div class="px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        <h3 class="text-xl leading-6 font-bold text-gray-900">
                             Laporan Berdasarkan Wilayah
                         </h3>
                     </div>
@@ -161,9 +137,9 @@
             </div>
 
             <!-- Monthly Reports Trend Chart -->
-            <div class="mt-8 bg-white rounded-lg shadow overflow-hidden">
+            <div class="mt-8 bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-200">
                 <div class="px-4 py-5 sm:px-6">
-                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                    <h3 class="text-xl leading-6 font-bold text-gray-900">
                         Tren Laporan Bulanan
                     </h3>
                 </div>
@@ -174,36 +150,36 @@
 
             <!-- Filter and Table Section -->
             <div class="mt-8">
-                <div class="bg-white shadow rounded-lg overflow-hidden">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-200">
                     <div class="px-4 py-5 sm:px-6 flex flex-col md:flex-row md:items-center md:justify-between">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        <h3 class="text-xl leading-6 font-bold text-gray-900">
                             Laporan Terbaru
                         </h3>
 
                         <!-- Filters -->
                         <form method="GET" action="{{ route('portal.index') }}" class="mt-4 md:mt-0 flex flex-col sm:flex-row gap-3">
-                            <select name="filter_kategori" class="form-select block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                            <select name="filter_kategori" class="form-select block w-full rounded-xl border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 sm:text-sm bg-white text-gray-900">
                                 <option value="">Semua Kategori</option>
                                 @foreach (array_keys($categoryData) as $kategori)
                                     <option value="{{ $kategori }}" @selected(request('filter_kategori') == $kategori)>{{ $kategori }}</option>
                                 @endforeach
                             </select>
 
-                            <select name="filter_lokasi" class="form-select block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                            <select name="filter_lokasi" class="form-select block w-full rounded-xl border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 sm:text-sm bg-white text-gray-900">
                                 <option value="">Semua Wilayah</option>
                                 @foreach (array_keys($regionData) as $lokasi)
                                     <option value="{{ $lokasi }}" @selected(request('filter_lokasi') == $lokasi)>{{ $lokasi }}</option>
                                 @endforeach
                             </select>
 
-                            <select name="filter_status" class="form-select block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+                            <select name="filter_status" class="form-select block w-full rounded-xl border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 sm:text-sm bg-white text-gray-900">
                                 <option value="">Semua Status</option>
                                 <option value="Ringan" @selected(request('filter_status') == 'Ringan')>Ringan</option>
                                 <option value="Sedang" @selected(request('filter_status') == 'Sedang')>Sedang</option>
                                 <option value="Berat" @selected(request('filter_status') == 'Berat')>Berat</option>
                             </select>
 
-                            <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <button type="submit" class="inline-flex items-center px-6 py-2 border border-transparent text-sm font-semibold rounded-xl text-amber-50 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200">
                                 Filter
                             </button>
                         </form>
