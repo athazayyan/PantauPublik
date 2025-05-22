@@ -77,9 +77,8 @@
                         <p class="text-gray-400 italic">Tidak ada lampiran tersedia</p>
                     @endif
                 </div>
-
+                @if ($laporan->pelapor_id == auth()->user()->id)                
                 <div class="flex mt-6 pt-4 border-t border-gray-700">
-                    @if ($laporan->pelapor_id == auth()->user()->id)
                         <a href="{{ route('laporan.edit', $laporan->id) }}" class="px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white rounded-md mr-3 transition duration-200">
                             <i class="fas fa-edit mr-1"></i> Edit
                         </a>
@@ -90,7 +89,7 @@
                                 <i class="fas fa-trash mr-1"></i> Delete
                             </button>
                         </form>
-                    @endif
+                     @endif
                     <a href="{{ url('/laporan') }}" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-md transition duration-200">
                         <i class="fas fa-arrow-left mr-1"></i> Kembali
                     </a>

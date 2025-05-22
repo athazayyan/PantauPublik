@@ -16,7 +16,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('home')->with('success', 'Logout Berhasil');
+    return redirect('/')->with('success', 'Logout Berhasil');
 })->name('logout');
 
 
